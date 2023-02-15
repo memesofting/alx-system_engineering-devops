@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod a+x -R /0x01-shell_permissions
+chmod 755 -R /0x01-shell_permissions
