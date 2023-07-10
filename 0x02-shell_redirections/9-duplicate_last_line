@@ -1,2 +1,2 @@
 #!/bin/bash
-echo tail iacta | sed -n '10p' >> iacta
+tail -n 1 iacta >> iacta
