@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ltq | head -n 11
+ls -lt | head -n 11 | sort
