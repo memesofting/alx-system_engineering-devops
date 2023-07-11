@@ -1,2 +1,2 @@
 #!/bin/bash
-echo coCOcoa | tr -d c,C
+echo Chicago | tr -d c,C
