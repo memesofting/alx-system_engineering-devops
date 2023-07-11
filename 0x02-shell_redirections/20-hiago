@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c c C
+echo coCOcoa | tr -d c,C
