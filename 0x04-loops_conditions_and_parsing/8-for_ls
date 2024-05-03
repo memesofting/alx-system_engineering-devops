@@ -2,6 +2,6 @@
 # This script prints the contwnt of the current directory
 # in list format
 # Where only the part of the name after the first dash is displayed
-for i in 'ls'; do
-	echo  $i
+for i in *; do
+	echo "$i" | cut -d '-' -f2-
 done
