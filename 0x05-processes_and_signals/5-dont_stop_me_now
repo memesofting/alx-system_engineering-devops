@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 # Script stops '4-to_infinity_and_beyond' process
-# process_name=$4-to_infinity_and_beyond
-target=$(pgrep -x "4-to_infinity_and_beyond")
-if [ -n "$target" ]; then
-	for pid in $target; do
-		kill "$target"
-		echo "Terminated"
-	done
+process_name="4-to_infinity_and_beyond"
+target=$(pgrep "$process_name")
+if [ "$target" ]; then
+	kill "$target"
 fi
