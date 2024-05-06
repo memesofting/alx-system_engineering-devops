@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Script killes the process '7-highlander'
 # shellcheck disable=SC2009
-target=$(pgrep "7-highlander")
+target=$(pgrep -f "7-highlander")
 if [ -n "$target" ]; then
-	pkill "$target"
-	echo "Killed"
+	kill -9 "$target"
 fi
