@@ -3,5 +3,4 @@
 target=$(pgrep -f "4-to_infinity_and_beyond")
 if [ -n "$target" ]; then
 	kill "$target"
-	echo "Terminated"
 fi
