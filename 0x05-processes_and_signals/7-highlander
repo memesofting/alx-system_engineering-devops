@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Script displays 'To infinity and beyond' indefinitely with a sleep 2 in btween each iteration 'I am invincible !!!' when receiving a SIGTERM signal
 # shellcheck disable=SC2009
-trap 'echo "I am invincible!!!"; exit' SIGTERM
+trap 'echo "I am invincible!!!"' SIGTERM
 while true; do
 	echo "To infinity and beyond"
 	sleep 2
