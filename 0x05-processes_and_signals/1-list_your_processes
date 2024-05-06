@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # This script displays a list of all the current running processes
-ps aux | awk '{print $1, $2, $9, $11}'
+echo -e "USER\tSTART\tCOMMAND"
+ps -Ae -o user=,start_time=,cmd= --sort=start_time
