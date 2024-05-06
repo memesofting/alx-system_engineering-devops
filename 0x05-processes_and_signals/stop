@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Start the 4-to_infinity_and_beyond process
+./4-to_infinity_and_beyond &
+
+# Capture the process ID (PID)
+PID=$!
+
+# Wait for the process to start
+sleep 1
+
+# Stop the process
+kill $PID
