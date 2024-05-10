@@ -1,1 +1,3 @@
 #/usr/bin/env bash
+# This scri[t displays all listening ports
+netstat -pl
