@@ -1,1 +1,6 @@
 #!/usr/bin/env bash
+# Script creates rsa key pair
+pkey_name="school"
+passPhrase="betty"
+
+ssh-keygen -t rsa -b 4096 -f $pkey_name -N $passPhrase
