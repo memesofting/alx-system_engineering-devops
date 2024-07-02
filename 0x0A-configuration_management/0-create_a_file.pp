@@ -1,3 +1,4 @@
+# Create file with permissions
 file { '/tmp/school':
 ensure     => file,
 content    => 'I love puppet',
