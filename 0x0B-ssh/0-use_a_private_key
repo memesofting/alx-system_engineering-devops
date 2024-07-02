@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+USER="ubuntu"
+KEY_PATH="~/.ssh/school"
+SERVER="54.175.18.26"
+
+ssh -i $KEY_PATH $USER@$SERVER
