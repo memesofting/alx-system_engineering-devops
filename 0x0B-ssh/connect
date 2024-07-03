@@ -1,0 +1,18 @@
+#!/bin/bash
+
+USER="ubuntu"
+KEY_PATH="$HOME/.ssh/school"
+SERVER="54.209.254.13"
+
+# Ensure correct permissions for the private key
+chmod 600 $KEY_PATH
+
+# Start the SSH agent and add the private key
+eval $(ssh-agent -s)
+ssh-add $KEY_PATH
+
+# Copy the public key to the server's authorized_keys (optional, if not already done)
+ssh-copy-id -i $KEY_PATH.pub $USER@$SERVER
+
+# Connect to the server using the private key
+ssh -i $KEY_PATH $USER@$SERVER

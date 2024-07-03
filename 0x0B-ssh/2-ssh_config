@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ssh cofig
 Host memeserver
-        HostName 54.175.18.26
+        HostName 54.209.254.13
         User ubuntu
         IdentityFile ~/.ssh/school
         PasswordAuthentication no
