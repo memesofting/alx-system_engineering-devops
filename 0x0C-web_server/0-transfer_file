@@ -1,4 +1,4 @@
-#!/bin/bash/env bash
+#!/usr/bin/env bash
 # script tranfers file from one client to a server
 
 # Function to display usage
