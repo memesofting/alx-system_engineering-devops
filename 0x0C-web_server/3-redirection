@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# script redirects to another page
+
+sudo bash -c "cat > $NGINX_CONF <<EOF
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        root /var/www/html;
+        index index.html index.htm;
+    }
+
+    location /redirect_me {
+        return 301 /target_page;
+    }
+    
+    location /target_page {
+        root /var/www/html;
+        index index.html index.htm;
+    }
+}
+EOF"
+
+# Check Nginx configuration for syntax errors
+sudo nginx -t
+
+# Restart Nginx to apply the changes
+sudo service nginx restart
+
+# Confirm the redirection
+curl -I http://localhost/redirect_me | grep "301 Moved Permanently"
