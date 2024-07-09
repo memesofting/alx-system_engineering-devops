@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 # script redirects to another page
 
+# Update package list and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Define the Nginx configuration file path
+NGINX_CONF="/etc/nginx/sites-available/default"
+
+# Create a simple HTML file for the target page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Backup the original configuration file
+sudo cp $NGINX_CONF $NGINX_CONF.bak
+
 sudo bash -c "cat > $NGINX_CONF <<EOF
 server {
     listen 80;
