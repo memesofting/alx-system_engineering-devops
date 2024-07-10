@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# Create the project directory
+mkdir apache-docker
+cd apache-docker || exit
+
+# Create the Dockerfile
+cat <<EOF > Dockerfile
+# Use the official Apache image from the Docker Hub
+FROM httpd:latest
+
+# Copy your website content
+COPY ./public-html/ /usr/local/apache2/htdocs/
+EOF
+
+# Create the public-html directory and index.html file
+mkdir public-html
+cat <<EOF > public-html/index.html
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Welcome to Apache</title>
+</head>
+<body>
+    <h1>Hello Holberton</h1>
+</body>
+</html>
+EOF
+
+# Build the Docker image
+docker build -t mycustomapache .
+
+# Run the Docker container
+docker run -d --name mycustomapache-container -p 8080:80 mycustomapache
+
+# Verify the setup
+curl http://localhost:8080
+
