@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Script configures a new ubuntu machine with haproxy
+# distributes requests using round ron=bin algorithm
+
+# update package list and install haproxy
+sudo apt update
+sudo apt install -y haproxy
+
+# Backup the original HAProxy configuration file
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
+
+# Append custom HAProxy configuration
+sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null <<EOF
+
+# Frontend configuration
+frontend http
+        bind *:80
+        mode http
+        default_backend web-backend
+
+# Backend configuration
+backend web-backend
+        balance roundrobin
+        server web-01 web-01.memesoft.tech:80 check
+        server web-02 web-02.memesoft.tech:80 check
+EOF
+
+# Restart HAProxy to apply the new configuration
+sudo service haproxy restart
+
+echo "HAProxy configuration updated and service restarted successfully."
