@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ssh configuration
-Host memeserver
-        HostName 54.209.254.13
+Host memeserver2
+        HostName 35.153.57.73
         User ubuntu
         IdentityFile ~/.ssh/school
         PasswordAuthentication no
