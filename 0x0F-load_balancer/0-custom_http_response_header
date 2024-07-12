@@ -6,6 +6,8 @@
 sudo apt update
 sudo apt install -y nginx
 
+HOSTNAME=$(hostname)
+
 # Create a backup of the default Nginx configuration file
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup
 
@@ -16,7 +18,7 @@ server {
     server_name memesoft.tech;
 
     # My custom header
-    add_header X-Served-By "hostname";
+    add_header X-Served-By \"$HOSTNAME\";
 
     location / {
         root /var/www/html;
