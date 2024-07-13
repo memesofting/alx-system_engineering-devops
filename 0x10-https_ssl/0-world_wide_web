@@ -25,7 +25,7 @@ dns_lookup() {
             destination="$result"
         fi
         
-        echo "The subdomain ${full_domain} is a ${record_type} record and points to ${destination}"
+        echo "The subdomain ${sub} is a ${record_type} record and points to ${destination}"
     done
 }
 
