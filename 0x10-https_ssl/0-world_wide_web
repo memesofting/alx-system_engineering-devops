@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Script displays information about subdomains
+
+# shellcheck disable=SC2086
+
+dns_lookup() {
+    local domain="$1"
+    local subdomain="$2"
+    
+    if [[ -z "$subdomain" ]]; then
+        subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        subdomains=("$subdomain")
+    fi
+    
+    for sub in "${subdomains[@]}"; do
+        full_domain="${sub}.${domain}"
+        result=$(dig +short "$full_domain")
+        
+        if [[ -z "$result" ]]; then
+            record_type="CNAME"
+            destination="N/A"
+        else
+            record_type="A"
+            destination="$result"
+        fi
+        
+        echo "The subdomain ${full_domain} is a ${record_type} record and points to ${destination}"
+    done
+}
+
+# Check if domain parameter is provided
+if [[ -z "$1" ]]; then
+    echo "Error: Domain parameter is mandatory."
+    exit 1
+fi
+
+# Read arguments
+domain="$1"
+subdomain="$2"
+
+# Perform DNS lookup
+dns_lookup "$domain" "$subdomain"
